@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.exception.DeqOverflowException;
+import org.example.exception.EmptyDeqException;
+
 import java.util.Arrays;
 
 public class Deq {
@@ -18,7 +21,7 @@ public class Deq {
 
     public void insertLeft(int num) {
 
-        if (isFull()) throw new RuntimeException();
+        if (isFull()) throw new DeqOverflowException();
 
         left = (left == -1) ? deququ.length - 1 : left - 1;
         deququ[left] = num;
@@ -29,7 +32,7 @@ public class Deq {
 
     public void insertRight(int num) {
 
-        if (isFull()) throw new RuntimeException();
+        if (isFull()) throw new DeqOverflowException();
 
         right = (right == deququ.length - 1) ? 0 : right + 1;
         deququ[right] = num;
@@ -40,7 +43,7 @@ public class Deq {
 
     public int removeLeft() {
 
-        if (isEmpty()) throw new RuntimeException();
+        if (isEmpty()) throw new EmptyDeqException();
 
         int res = deququ[left];
         left = (left == deququ.length - 1) ? 0 : left + 1;
@@ -52,7 +55,7 @@ public class Deq {
 
     public int removeRight() {
 
-        if (isEmpty()) throw new RuntimeException();
+        if (isEmpty()) throw new EmptyDeqException();
 
         int res = deququ[right];
         right = (right == 0) ? deququ.length - 1 : right - 1;
@@ -69,5 +72,12 @@ public class Deq {
 
     public boolean isFull() {
         return (size == deququ.length);
+    }
+
+    @Override
+    public String toString() {
+        return "Deq{" +
+                "deququ=" + Arrays.toString(deququ) +
+                '}';
     }
 }
