@@ -1,14 +1,23 @@
 package org.example;
 
+import org.example.exception.DeqOverflowException;
+import org.example.exception.EmptyDeqException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class DeqTest {
 
+    private Deq deq;
+
+    @BeforeEach
+    void init() {
+        deq = new Deq(2);
+    }
+
     @Test
     void insertLeft() {
-        Deq deq = new Deq(2);
         deq.insertLeft(5);
         int expected = 5;
         int actual = deq.removeLeft();
@@ -18,7 +27,6 @@ class DeqTest {
 
     @Test
     void insertRight() {
-        Deq deq = new Deq(2);
         deq.insertRight(5);
         int expected = 5;
         int actual = deq.removeRight();
@@ -28,7 +36,6 @@ class DeqTest {
 
     @Test
     void removeLeft() {
-        Deq deq = new Deq(2);
         deq.insertLeft(2);
         deq.insertRight(3);
 
@@ -38,7 +45,6 @@ class DeqTest {
 
     @Test
     void removeRight() {
-        Deq deq = new Deq(2);
         deq.insertLeft(2);
         deq.insertRight(3);
 
@@ -48,17 +54,29 @@ class DeqTest {
 
     @Test
     void isEmpty() {
-        Deq deq = new Deq(2);
-
         assertTrue(deq.isEmpty());
     }
 
     @Test
     void isFull() {
-        Deq deq = new Deq(2);
         deq.insertLeft(2);
         deq.insertRight(3);
 
         assertTrue(deq.isFull());
+    }
+
+    @Test
+    void insertEmptyDeq() {
+        assertThrows(EmptyDeqException.class, deq::removeLeft);
+        assertThrows(EmptyDeqException.class, deq::removeRight);
+    }
+
+    @Test
+    void insertFullDeq() {
+        deq.insertRight(1);
+        deq.insertLeft(2);
+
+        assertThrows(DeqOverflowException.class, () -> deq.insertRight(3));
+        assertThrows(DeqOverflowException.class, () -> deq.insertLeft(4));
     }
 }
