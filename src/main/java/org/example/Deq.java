@@ -19,6 +19,7 @@ public class Deq {
     public void insertLeft(int num) {
 
         if (isFull()) throw new RuntimeException();
+
         left = (left == -1) ? deququ.length - 1 : left - 1;
         deququ[left] = num;
         size++;
@@ -31,7 +32,6 @@ public class Deq {
         if (isFull()) throw new RuntimeException();
 
         right = (right == deququ.length - 1) ? 0 : right + 1;
-
         deququ[right] = num;
         size++;
 
@@ -68,6 +68,6 @@ public class Deq {
     }
 
     public boolean isFull() {
-        return (size == deququ.length - 1);
+        return (size == deququ.length);
     }
 }
