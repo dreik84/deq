@@ -28,10 +28,22 @@ class DeqTest {
 
     @Test
     void removeLeft() {
+        Deq deq = new Deq(2);
+        deq.insertLeft(2);
+        deq.insertRight(3);
+
+        deq.removeLeft();
+        deq.removeLeft();
     }
 
     @Test
     void removeRight() {
+        Deq deq = new Deq(2);
+        deq.insertLeft(2);
+        deq.insertRight(3);
+
+        deq.removeRight();
+        deq.removeRight();
     }
 
     @Test
@@ -41,12 +53,12 @@ class DeqTest {
         assertTrue(deq.isEmpty());
     }
 
-//    @Test
-//    void isFull() {
-//        Deq deq = new Deq(2);
-//        deq.insertLeft(2);
-//        deq.insertRight(3);
-//
-//        assertTrue(deq.isFull());
-//    }
+    @Test
+    void isFull() {
+        Deq deq = new Deq(2);
+        deq.insertLeft(2);
+        deq.insertRight(3);
+
+        assertTrue(deq.isFull());
+    }
 }
