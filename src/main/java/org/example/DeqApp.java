@@ -11,8 +11,6 @@ public class DeqApp {
         deq.insertRight(4);
         deq.insertRight(5);
 
-//        System.out.println(deq.removeLeft());
-
         deq.insertLeft(55);
         deq.insertLeft(66);
         deq.insertLeft(77);
