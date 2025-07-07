@@ -23,7 +23,7 @@ public class Deq {
 
         if (isFull()) throw new DeqOverflowException();
 
-        left = (left == -1) ? deququ.length - 1 : left - 1;
+        left = (left == -1 || left == 0) ? deququ.length - 1 : left - 1;
         deququ[left] = num;
         size++;
 
@@ -45,6 +45,8 @@ public class Deq {
 
         if (isEmpty()) throw new EmptyDeqException();
 
+        left = (left == -1) ? 0 : left;
+
         int res = deququ[left];
         left = (left == deququ.length - 1) ? 0 : left + 1;
         size--;
@@ -56,6 +58,8 @@ public class Deq {
     public int removeRight() {
 
         if (isEmpty()) throw new EmptyDeqException();
+
+        right = (right == -1) ? deququ.length - 1 : right;
 
         int res = deququ[right];
         right = (right == 0) ? deququ.length - 1 : right - 1;
