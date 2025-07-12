@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.exception.EmptyDeqException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,10 +16,8 @@ class DeqLinkListTest {
     }
 
     @Test
-    void insertLeft() {
+    void insertRemoveLeft() {
         deq.insertLeft(1);
-
-        System.out.println(deq);
 
         int expected = 1;
         int actual = deq.removeLeft();
@@ -27,10 +26,8 @@ class DeqLinkListTest {
     }
 
     @Test
-    void insertRight() {
+    void insertRemoveRight() {
         deq.insertRight(1);
-
-        System.out.println(deq);
 
         int expected = 1;
         int actual = deq.removeRight();
@@ -41,5 +38,15 @@ class DeqLinkListTest {
     @Test
     void isEmpty() {
         assertTrue(deq.isEmpty());
+    }
+
+    @Test
+    void removeLeftThrown() {
+        assertThrows(EmptyDeqException.class, deq::removeLeft);
+    }
+
+    @Test
+    void removeRightThrown() {
+        assertThrows(EmptyDeqException.class, deq::removeRight);
     }
 }
