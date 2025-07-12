@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.StringJoiner;
+
 public class LinkList {
 
     private static class Node {
@@ -15,7 +17,7 @@ public class LinkList {
     private Node first;
     private Node last;
 
-    public void insertLeft(int num) {
+    public void insertFirst(int num) {
         Node node = new Node(num);
 
         if (isEmpty()) {
@@ -28,7 +30,7 @@ public class LinkList {
         first = node;
     }
 
-    public void insertRight(int num) {
+    public void insertLast(int num) {
         Node node = new Node(num);
 
         if (isEmpty()) {
@@ -41,7 +43,7 @@ public class LinkList {
         last = node;
     }
 
-    public int removeLeft() {
+    public int removeFirst() {
         int temp = first.value;
 
         if (first.next == null) {
@@ -55,11 +57,7 @@ public class LinkList {
         return temp;
     }
 
-    public boolean isEmpty() {
-        return first == null;
-    }
-
-    public int removeRight() {
+    public int removeLast() {
         int temp = last.value;
 
         if (first.next == null) {
@@ -73,16 +71,20 @@ public class LinkList {
         return temp;
     }
 
+    public boolean isEmpty() {
+        return first == null;
+    }
+
     @Override
     public String toString() {
         Node currentNode = first;
-        StringBuilder sb = new StringBuilder();
+        StringJoiner sj = new StringJoiner(", ");
 
         while (currentNode != null) {
-            sb.append(currentNode.value);
+            sj.add(String.valueOf(currentNode.value));
             currentNode = currentNode.next;
         }
 
-        return sb.toString();
+        return String.format("[%s]", sj);
     }
 }
