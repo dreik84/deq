@@ -3,7 +3,8 @@ package org.example;
 public class DeqApp {
     public static void main(String[] args) {
 
-        Deq deq = new Deq(10);
+//        Deq deq = new Deq(10);
+        DeqLinkList deq = new DeqLinkList();
 
         deq.insertRight(1);
         deq.insertRight(2);
@@ -11,11 +12,15 @@ public class DeqApp {
         deq.insertRight(4);
         deq.insertRight(5);
 
+        System.out.println(deq);
+
         deq.insertLeft(55);
         deq.insertLeft(66);
         deq.insertLeft(77);
         deq.insertLeft(88);
         deq.insertLeft(99);
+
+        System.out.println(deq);
 
         System.out.println(deq.removeLeft());
         System.out.println(deq.removeRight());
