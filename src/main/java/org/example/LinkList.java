@@ -2,16 +2,18 @@ package org.example;
 
 public class LinkList {
 
-    class Node {
+    private static class Node {
         Node next;
         Node previous;
         int value;
 
-        Node(int num) { value = num; }
+        Node(int num) {
+            value = num;
+        }
     }
 
-    public Node first;
-    public Node last;
+    private Node first;
+    private Node last;
 
     public void insertLeft(int num) {
         Node node = new Node(num);
@@ -24,6 +26,19 @@ public class LinkList {
 
         node.next = first;
         first = node;
+    }
+
+    public void insertRight(int num) {
+        Node node = new Node(num);
+
+        if (isEmpty()) {
+            first = node;
+        } else {
+            last.next = node;
+            node.previous = last;
+        }
+
+        last = node;
     }
 
     public int removeLeft() {
@@ -44,6 +59,20 @@ public class LinkList {
         return first == null;
     }
 
+    public int removeRight() {
+        int temp = last.value;
+
+        if (first.next == null) {
+            first = null;
+            last = null;
+        } else {
+            last = last.previous;
+            last.next = null;
+        }
+
+        return temp;
+    }
+
     @Override
     public String toString() {
         Node currentNode = first;
@@ -56,5 +85,4 @@ public class LinkList {
 
         return sb.toString();
     }
-
 }
