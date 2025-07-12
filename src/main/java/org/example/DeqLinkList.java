@@ -11,23 +11,23 @@ public class DeqLinkList {
     }
 
     public void insertLeft(int num) {
-        list.insertLeft(num);
+        list.insertFirst(num);
     }
 
     public void insertRight(int num) {
-        list.insertRight(num);
+        list.insertLast(num);
     }
 
     public int removeLeft() {
         if (list.isEmpty()) throw new EmptyDeqException();
 
-        return list.removeLeft();
+        return list.removeFirst();
     }
 
     public int removeRight() {
         if (list.isEmpty()) throw new EmptyDeqException();
 
-        return list.removeRight();
+        return list.removeLast();
     }
 
     public boolean isEmpty() {
