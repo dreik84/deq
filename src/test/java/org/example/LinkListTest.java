@@ -16,24 +16,24 @@ class LinkListTest {
 
     @Test
     void insertRemoveLeft() {
-        list.insertLeft(1);
+        list.insertFirst(1);
 
         System.out.println(list);
 
         int expected = 1;
-        int actual = list.removeLeft();
+        int actual = list.removeFirst();
 
         assertEquals(expected, actual);
     }
 
     @Test
     void insertRemoveRight() {
-        list.insertRight(1);
+        list.insertLast(1);
 
         System.out.println(list);
 
         int expected = 1;
-        int actual = list.removeRight();
+        int actual = list.removeLast();
 
         assertEquals(expected, actual);
     }
